@@ -1,3 +1,5 @@
+import json
+
 from pydantic import ValidationError
 
 from generation.base_roadmap_generator import BaseRoadmapGenerator
@@ -14,7 +16,7 @@ class RoadmapGenerator(BaseRoadmapGenerator):
         :param roadmap_topic: topic to generate a roadmap for
         :return: Roadmap object
         """
-        roadmap_json = GPTUtility.prompt(msg=PROMPT.replace(TOPIC_PLACEHOLDER, roadmap_topic))
+        roadmap_json = json.loads(GPTUtility.prompt(msg=PROMPT.replace(TOPIC_PLACEHOLDER, roadmap_topic)))
         try:
             return Roadmap(**roadmap_json)
         except ValidationError as e:

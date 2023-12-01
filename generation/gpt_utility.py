@@ -1,3 +1,4 @@
+import openai
 from openai import OpenAI
 from dotenv import dotenv_values
 
@@ -10,12 +11,17 @@ class GPTUtility:
     )
 
     @staticmethod
-    def prompt(msg: str, model: str = 'gpt-3.5-turbo'):
+    def prompt(msg: str, model: str = 'gpt-3.5-turbo') -> str:
         """
         Prompts gpt model with msg
         :param msg: prompt
         :param model: type of openai model
         :return: model response
         """
-        completion = GPTUtility.client.chat.completions.create(model=model, messages=[{"role": "user", "content": msg}])
-        return completion.choices[0].text
+        try:
+            completion = GPTUtility.client.chat.completions.create(model=model, messages=[{"role": "user", "content": msg}])
+            return completion.choices[0].text
+        except openai.RateLimitError as e:
+            print(f'openai rate limit error={e.message}')
+            return '{}'
+
