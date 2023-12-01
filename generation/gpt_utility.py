@@ -1,8 +1,15 @@
-import openai
+from openai import OpenAI
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
 
 
 class GPTUtility:
+    client = OpenAI(
+        api_key=config['OPENAI_API_KEY']
+    )
+
     @staticmethod
-    def prompt(self, msg: str, model: str = 'gpt-3.5-turbo'):
-        completion = openai.ChatCompletion.create(model=model, message=[{"role": "user", "content": msg}])
+    def prompt(msg: str, model: str = 'gpt-3.5-turbo'):
+        completion = GPTUtility.client.chat.completions.create(model=model, messages=[{"role": "user", "content": msg}])
         return completion.choices[0].text

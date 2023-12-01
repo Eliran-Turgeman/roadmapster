@@ -6,7 +6,7 @@ if __name__ == '__main__':
     parser = create_parser()
     args = parser.parse_args()
 
-    roadmap = RoadmapGenerator().generate('mock')
+    roadmap = RoadmapGenerator().generate(args.topic)
 
     if args.output == 'json':
         output = JsonOutput(roadmap).show()
