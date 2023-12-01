@@ -1,6 +1,9 @@
 # Roadmapster
 Generate a roadmap towards any goal in the CLI using openai models.
 
+# Install
+Currently only via `git clone`
+
 # Usage
 ```
 usage: Roadmapster [-h] [-o {json}] topic
