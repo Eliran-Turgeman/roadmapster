@@ -20,9 +20,7 @@ optional arguments:
 
 `python main.py kubernetes`
 
-defaults to JSON representation of the result, similar too:
-
-`python main.py kubernetes -o json`
+defaults to JSON representation of the result, similar to `python main.py kubernetes -o json`
 
 Currently supported outputs:
 * json
