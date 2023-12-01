@@ -1,7 +1,7 @@
 from pydantic import ValidationError
 
 from generation.base_roadmap_generator import BaseRoadmapGenerator
-from generation.roadmap_models import Roadmap
+from generation_contract.roadmap_models import Roadmap
 
 
 class RoadmapGenerator(BaseRoadmapGenerator):
