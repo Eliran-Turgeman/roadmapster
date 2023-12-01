@@ -8,6 +8,12 @@ from generation_contract.roadmap_models import Roadmap
 
 class RoadmapGenerator(BaseRoadmapGenerator):
     def generate(self, roadmap_topic: str) -> Roadmap:
+        """
+        Generates a roadmap objects given the gpt prompt result.
+        Given a malformed response, returns an empty roadmap object.
+        :param roadmap_topic: topic to generate a roadmap for
+        :return: Roadmap object
+        """
         roadmap_json = GPTUtility.prompt(msg=PROMPT.replace(TOPIC_PLACEHOLDER, roadmap_topic))
         try:
             return Roadmap(**roadmap_json)
