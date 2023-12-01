@@ -5,6 +5,8 @@ Generate a roadmap towards any goal in the CLI using openai models.
 Currently only via `git clone`
 
 # Usage
+Generate an openai api key following https://platform.openai.com/api-keys and create a `.env` file with the following env variable `OPENAI_API_KEY`
+
 ```
 usage: Roadmapster [-h] [-o {json}] topic
 
